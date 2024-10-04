@@ -55,8 +55,8 @@
 1. Clone the repository:
 
    ```bash
-   git clone ...
-   cd ...
+   git clone [...](https://github.com/KaProDes/se-ss-ion.git)
+   cd se-ss-ion
    ```
 
 2. Install dependencies:
