@@ -3,6 +3,10 @@ import axios from 'axios';
 import SignUp from './SignUp';
 import { useSelector,  } from 'react-redux';
 
+const apiBaseUrl = import.meta.env.MODE === 'production' 
+    ? 'https://se-ss-ion.onrender.com/api/v1' 
+    : '/api/v1';
+
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -13,7 +17,7 @@ const Login = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/v1/user/login', { username, password });
+      const response = await axios.post(`${apiBaseUrl}/user/login`, { username, password });
       onLogin(response.data.token);
     } catch (err) {
       console.log(err);

@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+const apiBaseUrl = import.meta.env.MODE === 'production' 
+    ? 'https://se-ss-ion.onrender.com/api/v1' 
+    : '/api/v1';
+
+
 const SignUp = ({ onSignUp }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -12,7 +17,7 @@ const SignUp = ({ onSignUp }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/v1/user/signup', {
+      const response = await axios.post(`${apiBaseUrl}/user/signup`, {
         username,
         password,
         first_name: firstName,

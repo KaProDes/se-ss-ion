@@ -6,6 +6,9 @@ import { useSelector } from 'react-redux';
 import {styles} from './themeStyles.js';
 import AnimatedMessage from './AnimatedMessage.jsx';
 
+const apiBaseUrl = import.meta.env.MODE === 'production' 
+    ? 'https://se-ss-ion.onrender.com/api/v1' 
+    : '/api/v1';
 
 
 const Stopwatch = () => {
@@ -43,7 +46,7 @@ const Stopwatch = () => {
         try {
             const timeInSeconds = time / 1000; // since set interval was operates in milliseconds
             const token = localStorage.getItem('token');
-            await axios.post('/api/v1/user/save-session', {
+            await axios.post(`${apiBaseUrl}/user/save-session`, {
                 startDateTime: startTime.toISOString(),
                 totalTime: timeInSeconds
             }, {

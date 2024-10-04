@@ -3,6 +3,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 
+const apiBaseUrl = import.meta.env.MODE === 'production' 
+    ? 'https://se-ss-ion.onrender.com/api/v1' 
+    : '/api/v1';
+
+
 const Profile = () => {
   const [sessions, setSessions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -25,7 +30,7 @@ const Profile = () => {
       }
 
       try {
-        const response = await axios.get('/api/v1/user/sessions', {
+        const response = await axios.get(`${apiBaseUrl}/user/sessions`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setSessions(response.data);
