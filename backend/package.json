@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend service for timer fullstack app ",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --env-file=.env index.js",
+    "start": "node index.js"
+  },
+  "type": "module",
+  "author": "kaprodes",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/cors": "^10.0.0",
+    "@fastify/jwt": "^9.0.0",
+    "@fastify/postgres": "^6.0.0",
+    "fastify": "^5.0.0",
+    "fastify-bcrypt": "^1.0.1",
+    "lodash": "^4.17.21",
+    "pg": "^8.13.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
