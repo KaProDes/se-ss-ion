@@ -10,6 +10,7 @@ const fastify = Fastify({ logger: false });
 
 const PG_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 const JWT_SECRET = process.env.JWT_SECRET;
+const PORT = process.env.PORT || 3001;
 
 await fastify.register(cors, {
   origin: true,
@@ -47,7 +48,7 @@ fastify.get(
 // Start the server
 const start = async () => {
   try {
-    await fastify.listen({ port: process.env.PORT || 3001 });
+    await fastify.listen({ host: '0.0.0.0', port: PORT });
     fastify.log.info(`Server listening on ${fastify.server.address().port}`);
   } catch (err) {
     fastify.log.error(err);
