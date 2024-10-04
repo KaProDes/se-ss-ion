@@ -1,5 +1,10 @@
 [[redirects]]
-from="/"
-to="https://se-ss-ion.onrender.com/:splat"
-status=200
-force=true
+  from = "/api/*"
+  to = "https://se-ss-ion.onrender.com/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
