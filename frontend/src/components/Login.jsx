@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import SignUp from './SignUp';
 import { useSelector,  } from 'react-redux';
+import Timer from "./Timer";
 
 const apiBaseUrl = import.meta.env.MODE === 'production' 
     ? 'https://se-ss-ion.onrender.com/api/v1' 
@@ -33,7 +34,9 @@ const Login = ({ onLogin }) => {
   return (
     <div className={`min-h-screen flex items-center justify-center ${isDarkMode ? "bg-grey-600" : "bg-gray-50"} py-12 px-4 sm:px-6 lg:px-8`}>
       <div className="max-w-md space-y-8">
+      <h2 className={`mt-6 text-center text-6xl font-extrabold ${isDarkMode ? "text-gray-50" : "text-gray-900"}`}>se:<span className={isDarkMode ? "text-violet-400" : "text-violet-600"}>ss</span>:ion</h2>
         <div>
+          <Timer />
           <h2 className={`mt-6 text-center text-3xl font-extrabold ${isDarkMode ? "text-gray-50" : "text-gray-900"}`}>
             {isLogin ? 'Sign in to your account' : 'Create a new account'}
           </h2>

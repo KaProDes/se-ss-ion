@@ -1,13 +1,41 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate, Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { jwtDecode } from 'jwt-decode';
+import { FaSun, FaMoon } from 'react-icons/fa';
 import Login from './components/Login';
 import Stopwatch from './components/Stopwatch';
 import Profile from './components/Profile';
 import SignUp from './components/SignUp';
-import { jwtDecode } from 'jwt-decode';
-import { useSelector, useDispatch } from 'react-redux';
-import { styles} from "./components/themeStyles";
+import { styles } from "./components/themeStyles";
 
+const DarkModeToggle = ({ isDarkMode, toggleDarkMode }) => {
+  return (
+    <button
+      onClick={toggleDarkMode}
+      className={`
+        flex items-center justify-center
+        px-4 py-2 rounded-full
+        transition-all duration-300 ease-in-out
+        ${isDarkMode 
+          ? 'bg-gray-800 text-cyan-200 hover:bg-gray-700' 
+          : 'bg-blue-100 text-blue-800 hover:bg-blue-200'}
+      `}
+    >
+      {isDarkMode ? (
+        <>
+          <FaSun className="mr-2" />
+          <span>Light Mode</span>
+        </>
+      ) : (
+        <>
+          <FaMoon className="mr-2" />
+          <span>Dark Mode</span>
+        </>
+      )}
+    </button>
+  );
+};
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -26,7 +54,6 @@ const App = () => {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedToken = jwtDecode(token);
-      console.log(decodedToken)
       if (decodedToken) {
         setIsAuthenticated(true);
         setCurrentUser(decodedToken);
@@ -40,14 +67,12 @@ const App = () => {
     localStorage.setItem('token', token);
     const decodedToken = jwtDecode(token);
     setIsAuthenticated(true);
-    setUser(decodedToken);
     setCurrentUser(decodedToken);
   };
 
   const logout = () => {
     localStorage.removeItem('token');
     setIsAuthenticated(false);
-    setUser(null);
     setCurrentUser(null);
   };
 
@@ -61,19 +86,17 @@ const App = () => {
             <div className="flex justify-between h-16">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">   
-                <Link to="/" className={styles[mode].link}><span className="text-xl font-bold">se:<span className={isDarkMode ? "text-violet-400" : "text-violet-600"}>ss</span>:ion</span></Link>
+                  <Link to="/" className={styles[mode].link}>
+                    <span className="text-xl font-bold">se:<span className={isDarkMode ? "text-violet-400" : "text-violet-600"}>ss</span>:ion</span>
+                  </Link>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                  <button onClick={toggleDarkMode} className={styles[mode].button}>
-                      {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-                  </button>
+                <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
                 {isAuthenticated && (
                   <>
-                    {/* <Link to="/" className={styles[mode].link}>Stopwatch</Link> */}
                     <Link to="/profile" className={styles[mode].link}>Profile</Link>
                     <button onClick={logout} className={styles[mode].button}>Logout</button>
-                    {/* <span className={styles[mode].msg}>Welcome, {user.username}!</span> */}
                   </>
                 )}
               </div>
@@ -92,7 +115,7 @@ const App = () => {
       </div>
     </Router>
 
-  );
+);
 };
 
 export default App;

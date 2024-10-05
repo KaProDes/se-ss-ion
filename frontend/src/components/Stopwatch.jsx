@@ -64,11 +64,12 @@ const Stopwatch = () => {
 
 
   const formatTime = () => {
+    const hours = Math.floor(time / 3600000);
     const minutes = Math.floor((time / 60000) % 60);
     const seconds = Math.floor((time / 1000) % 60);
     const milliseconds = Math.floor((time / 10) % 100);
 
-    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}.${milliseconds.toString().padStart(2, '0')}`;
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}.${milliseconds.toString().padStart(2, '0')}`;
   };
 
   return (
