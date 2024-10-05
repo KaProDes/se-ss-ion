@@ -188,6 +188,41 @@ async function userRoutes(fastify, options) {
       }
     }
   );
+
+  fastify.post(
+    "/edit-session-title/:sessionId",
+    {
+      preHandler: fastify.authenticate,
+    },
+    async (request, reply) => {
+      const { sessionId } = request.params;
+      const { title } = request.body;
+      const token = request.headers.authorization.split(" ")[1];
+      const decoded = fastify.jwt.decode(token);
+      const userId = decoded.id;
+
+      try {
+        const result = await fastify.pg.query(
+          "UPDATE platform.session SET title = $1 WHERE id = $2 AND user_id = $3 RETURNING id, title",
+          [title, sessionId, userId]
+        );
+
+        if (result.rowCount === 0) {
+          return reply
+            .code(404)
+            .send({ error: "Session not found or not owned by user" });
+        }
+
+        reply.code(200).send({
+          message: "Session renamed successfully",
+          session: result.rows[0],
+        });
+      } catch (error) {
+        fastify.log.error(error);
+        reply.code(500).send({ error: "Error renaming session" });
+      }
+    }
+  )
 }
 
 export default userRoutes;

@@ -11,9 +11,21 @@ const fastify = Fastify({ logger: false });
 const PG_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 const JWT_SECRET = process.env.JWT_SECRET;
 const PORT = process.env.PORT || 3001;
+const NETLIFY_HOST_LINK = process.env.NETLIFY_HOST_LINK;
 
 await fastify.register(cors, {
-  origin: true,
+  origin: (origin, callback) => {
+    const allowedOrigins = [
+      "http://localhost:5173",
+      NETLIFY_HOST_LINK,
+    ];
+
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
