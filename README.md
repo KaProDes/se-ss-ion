@@ -1,10 +1,12 @@
-<a href="/" style="text-decoration: none;">
+<a href="https://se-ss-ion.netlify.app/" style="text-decoration: none;">
     <h1 style="font-size: 2.2rem; font-weight: bold;">
         se:<span style="color: #7D3BED;">ss</span>:ion - make every <span style="color: #7D3BED;">moment</span> count
     </h1>
 </a>
 
 > TLDR: Set a stopwatch for each session, keep a log, and review your progress to improve productivity over time.
+
+🎉 **Try it today!** 👉 [se:ss:ion](https://se-ss-ion.netlify.app/)  
 
 <img src="./hero.png" alt="se:ss:ion" style="max-width: 60%; max-height: 400px;">
 
