@@ -1,12 +1,24 @@
-<a href="https://se-ss-ion.netlify.app/" style="text-decoration: none;">
-    <h1 style="font-size: 2.2rem; font-weight: bold;">
-        se:<span style="color: #7D3BED;">ss</span>:ion - make every <span style="color: #7D3BED;">moment</span> count
-    </h1>
-</a>
-
 > TLDR: Set a stopwatch for each session, keep a log, and review your progress to improve productivity over time.
 
-🎉 **Try it today!** 👉 [se:ss:ion](https://se-ss-ion.netlify.app/)  
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <h2 align="center">Session - the minimalist time tracker</h2>
+
+  <p align="center">
+    Tune into distraction free productivity.
+    <br />
+    <br />
+    <a href="https://github.com/KaProDes/se-ss-ion/tree/main"><strong>Jump to Project Source »</strong></a>
+    <br />
+    <br />
+    <a href="https://se-ss-ion.netlify.app/">View Demo</a>
+    ·
+    <a href="https://github.com/KaProDes/se-ss-ion/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/KaProDes/se-ss-ion/issues">Request Feature</a>
+  </p>
+</div>
 
 <img src="./hero.png" alt="se:ss:ion" style="max-width: 60%; max-height: 400px;">
 
@@ -14,11 +26,10 @@
 
 ## Feature wishlist (Status)
 
-0. Deploy this webapp - currently it runs just on my local machine xD (IN PROGRESS)
-1. Progress Heatmap to track your sessions through months and years to flex (IN PROGRESS)
-2. Ability to add tags to your sessions like Work, Study, Brainstorming, etc (IN PROGRESS)
-3. Publlic sharable profiles (BACKLOG)
-4. More themes (The current two themes are pretty boring) (BACKLOG)
+0. Progress Heatmap to track your sessions through months and years to flex (IN PROGRESS)
+1. Ability to add tags to your sessions like Work, Study, Brainstorming, etc (IN PROGRESS)
+2. Publlic sharable profiles (BACKLOG)
+3. More themes (The current two themes are pretty boring) (BACKLOG)
 
 ## Features
 
